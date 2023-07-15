@@ -74,7 +74,7 @@ namespace Nuke.Common.Tools.DotNet.EF
                     arguments
                         .Add("ef database update")
                         .Add("{value}", Migration)
-                        .Add("--connectio {value}", Connection);
+                        .Add("--connection {value}", Connection);
                     break;
                 default:
                     throw new InvalidOperationException(Command.ToString());

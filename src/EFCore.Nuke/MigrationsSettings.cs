@@ -121,7 +121,7 @@ namespace Nuke.Common.Tools.DotNet.EF
                     break;
                 case Migrations.List:
                     arguments
-                        .Add("ef migrations bundle")
+                        .Add("ef migrations list")
                         .Add("--connection {value}", Connection)
                         .Add("--no-connect", NoConnect);
                     break;
