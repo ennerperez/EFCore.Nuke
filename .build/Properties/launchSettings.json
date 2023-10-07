@@ -1,0 +1,29 @@
+﻿{
+  "profiles": {
+    "Build.Clean": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "commandLineArgs": "--target Clean"
+    },
+    "Build.Restore": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "commandLineArgs": "--target Restore"
+    },
+    "Build.Compile": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "commandLineArgs": "--target Compile"
+    },
+    "Build.Publish": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "commandLineArgs": "--target Publish"
+    },
+    "Build.Pack": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "commandLineArgs": "--target Pack"
+    }
+  }
+}

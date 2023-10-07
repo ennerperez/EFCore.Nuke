@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
-using Nuke.Common.Utilities.Collections;
 
 namespace Nuke.Common.Tools.DotNet.EF.Tooling
 {
@@ -23,7 +22,7 @@ namespace Nuke.Common.Tools.DotNet.EF.Tooling
         /// <summary>
         ///
         /// </summary>
-        public override Action<OutputType, string> ProcessCustomLogger => DotNetTasks.DotNetLogger;
+        public Action<OutputType, string> ProcessCustomLogger => DotNetTasks.DotNetLogger;
 
         /// <summary>
         ///
