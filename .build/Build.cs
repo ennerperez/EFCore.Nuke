@@ -28,7 +28,12 @@ class Build : NukeBuild
 
     [Solution] readonly Solution Solution;
 
-    string Author = "Enner Pérez";
+    string _author = "Enner Pérez";
+    Version _version = new("1.0.0.0");
+    string _hash = string.Empty;
+    string _tags = "build automation continuous-integration tools orchestration";
+    string _projectUrl = "https://github.com/ennerperez/EFCore.Nuke";
+
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath TestsDirectory => RootDirectory / "tests";
     AbsolutePath PublishDirectory => RootDirectory / "publish";
@@ -80,17 +85,19 @@ class Build : NukeBuild
                 }
 
                 DotNetPack(s => s
+                    .EnableNoBuild()
+                    .EnableNoRestore()
                     .SetProject(projectInfo)
                     .SetConfiguration(Configuration)
                     .AddProperty("Icon", "icon.png")
                     .SetPackageId($"{projectInfo.Name}")
-                    .SetTitle($"{projectInfo.Name}")
                     .SetVersion(version)
-                    .SetAuthors(Author)
+                    .SetTitle($"{projectInfo.Name}")
+                    .SetAuthors(_author)
                     .SetDescription($"{projectInfo.Name}")
-                    .SetCopyright(Author)
-                    .EnableNoBuild()
-                    .EnableNoRestore()
+                    .SetCopyright(_author)
+                    .SetPackageProjectUrl(_projectUrl)
+                    .SetPackageTags(_tags)
                     .SetOutputDirectory($"{ArtifactsDirectory}"));
             }
         });
