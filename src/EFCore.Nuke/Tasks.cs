@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet.EF.Tooling;
@@ -10,12 +12,12 @@ namespace Nuke.Common.Tools.DotNet.EF
     ///
     /// </summary>
     [PublicAPI]
-    [ExcludeFromCodeCoverage]
     public static class Tasks
     {
         /// <summary>
         ///
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public static string DotNetPath => ToolPathResolver.TryGetEnvironmentExecutable("DOTNET_EXE") ?? ToolPathResolver.GetPathExecutable("dotnet");
 
         /// <summary>
@@ -67,7 +69,14 @@ namespace Nuke.Common.Tools.DotNet.EF
         {
             toolSettings = toolSettings ?? new Settings();
             using var process = ProcessTasks.StartProcess(toolSettings);
-            process.AssertZeroExitCode();
+            try
+            {
+                process.AssertZeroExitCode();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(process.Output.LastOrDefault().Text, e);
+            }
             return process.Output;
         }
 
@@ -80,7 +89,14 @@ namespace Nuke.Common.Tools.DotNet.EF
         {
             toolSettings = toolSettings ?? new DatabaseSettings();
             using var process = ProcessTasks.StartProcess(toolSettings);
-            process.AssertZeroExitCode();
+            try
+            {
+                process.AssertZeroExitCode();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(process.Output.LastOrDefault().Text, e);
+            }
             return process.Output;
         }
 
@@ -93,7 +109,14 @@ namespace Nuke.Common.Tools.DotNet.EF
         {
             toolSettings = toolSettings ?? new DbContextSettings();
             using var process = ProcessTasks.StartProcess(toolSettings);
-            process.AssertZeroExitCode();
+            try
+            {
+                process.AssertZeroExitCode();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(process.Output.LastOrDefault().Text, e);
+            }
             return process.Output;
         }
 
@@ -106,7 +129,14 @@ namespace Nuke.Common.Tools.DotNet.EF
         {
             toolSettings = toolSettings ?? new MigrationsSettings();
             using var process = ProcessTasks.StartProcess(toolSettings);
-            process.AssertZeroExitCode();
+            try
+            {
+                process.AssertZeroExitCode();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(process.Output.LastOrDefault().Text, e);
+            }
             return process.Output;
         }
     }

@@ -10,18 +10,19 @@ namespace Nuke.Common.Tools.DotNet.EF.Tooling
     ///
     /// </summary>
     [PublicAPI]
-    [ExcludeFromCodeCoverage]
     [Serializable]
     public class Settings : ToolSettings
     {
         /// <summary>
         ///
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override string ProcessToolPath => base.ProcessToolPath ?? DotNetTasks.DotNetPath;
 
         /// <summary>
         ///
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Action<OutputType, string> ProcessCustomLogger => DotNetTasks.DotNetLogger;
 
         /// <summary>
@@ -72,7 +73,10 @@ namespace Nuke.Common.Tools.DotNet.EF.Tooling
         /// <summary>
         ///
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public virtual IReadOnlyDictionary<string, object> Properties => PropertiesInternal.AsReadOnly();
+
+        [ExcludeFromCodeCoverage]
         internal Dictionary<string, object> PropertiesInternal { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
