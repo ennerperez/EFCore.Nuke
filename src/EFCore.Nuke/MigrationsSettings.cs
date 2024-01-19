@@ -12,7 +12,6 @@ namespace Nuke.Common.Tools.DotNet.EF
     ///
     /// </summary>
     [PublicAPI]
-    [ExcludeFromCodeCoverage]
     [Serializable]
     public class MigrationsSettings : Settings
     {
